@@ -3,3 +3,4 @@ A sofa that you can drive!
 
 
 # Built on hard work and collabs
+By students for students
