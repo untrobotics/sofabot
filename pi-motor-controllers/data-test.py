@@ -2,7 +2,7 @@ import serial
 import time
 
 right_wheel = serial.Serial(
-        '/dev/ttyUSB0',
+        '/dev/ttyUSB1',
         baudrate = 9600,
         parity=serial.PARITY_NONE,
         stopbits=serial.STOPBITS_ONE,
@@ -10,7 +10,7 @@ right_wheel = serial.Serial(
 );
 
 left_wheel = serial.Serial(
-        '/dev/ttyUSB1',
+        '/dev/ttyUSB0',
         baudrate = 9600,
         parity=serial.PARITY_NONE,
         stopbits=serial.STOPBITS_ONE,
@@ -25,18 +25,21 @@ current_multiplier = 3.9;
 
 try:
 	print("START");
-
-	packet = bytearray()
-	packet.append(0x00 + 0x01) # address byte
-	packet.append(0x40) # write command
-	packet.append(0x0f) # 1st data byte
-	packet.append(0xff) # 2nd data byte
-	packet.append()
-
-	#hex = serial.to_bytes([0x00]);
+	hex = serial.to_bytes([0xE1]);
 	left_wheel.write(hex);
-	#right_wheel.write(hex);
+	right_wheel.write(hex);
 	print("WRITTEN", hex);
+
+	hex = serial.to_bytes([0xCC]);
+
+	left_wheel.write(hex);
+	time.sleep(0.5);
+	line = left_wheel.read();
+	print("LEFT", line);
+
+	right_wheel.write(hex);
+	line = right_wheel.read();
+	print("RIGHT", line);
 
 	#print("SET DIR RIGHT");
 	#hex = serial.to_bytes([0x8A, 0x02]);
@@ -48,9 +51,9 @@ try:
 	#left_wheel.write(hex);
 	#print("WRITTEN", hex);
 
-	#hex = serial.to_bytes([0x40, 0x0F]);
+	#hex = serial.to_bytes([0x80, 0x00]);
 	#left_wheel.write(hex);
-	#hex = serial.to_bytes([0x80, 0x7f]);
+	#hex = serial.to_bytes([0x80, 0x00]);
 	#right_wheel.write(hex);
 	#print("WRITTEN", hex);
 
@@ -58,13 +61,7 @@ try:
 	#left_wheel.write(hex);
 	#print("WRITTEN", hex);
 
-	time.sleep(20);
-
-	hex = serial.to_bytes([0x40, 0x0]);
-        left_wheel.write(hex);
-        #hex = serial.to_bytes([0x80, 0x0]);
-        #right_wheel.write(hex);
-        print("WRITTEN", hex);
+	#time.sleep(1);
 
 	#while True:
 	#	print("READING LEFT");

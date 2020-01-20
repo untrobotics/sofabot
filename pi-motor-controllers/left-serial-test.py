@@ -2,7 +2,7 @@ import serial
 import time
 
 right_wheel = serial.Serial(
-        '/dev/ttyUSB0',
+        '/dev/ttyUSB1',
         baudrate = 9600,
         parity=serial.PARITY_NONE,
         stopbits=serial.STOPBITS_ONE,
@@ -10,7 +10,7 @@ right_wheel = serial.Serial(
 );
 
 left_wheel = serial.Serial(
-        '/dev/ttyUSB1',
+        '/dev/ttyUSB0',
         baudrate = 9600,
         parity=serial.PARITY_NONE,
         stopbits=serial.STOPBITS_ONE,
@@ -25,17 +25,9 @@ current_multiplier = 3.9;
 
 try:
 	print("START");
-
-	packet = bytearray()
-	packet.append(0x00 + 0x01) # address byte
-	packet.append(0x40) # write command
-	packet.append(0x0f) # 1st data byte
-	packet.append(0xff) # 2nd data byte
-	packet.append()
-
-	#hex = serial.to_bytes([0x00]);
-	left_wheel.write(hex);
-	#right_wheel.write(hex);
+	hex = serial.to_bytes([0xE1]);
+	#left_wheel.write(hex);
+	right_wheel.write(hex);
 	print("WRITTEN", hex);
 
 	#print("SET DIR RIGHT");
@@ -48,7 +40,7 @@ try:
 	#left_wheel.write(hex);
 	#print("WRITTEN", hex);
 
-	#hex = serial.to_bytes([0x40, 0x0F]);
+	#hex = serial.to_bytes([0x80, 0x7f]);
 	#left_wheel.write(hex);
 	#hex = serial.to_bytes([0x80, 0x7f]);
 	#right_wheel.write(hex);
@@ -58,28 +50,26 @@ try:
 	#left_wheel.write(hex);
 	#print("WRITTEN", hex);
 
-	time.sleep(20);
+	#time.sleep(10);
 
-	hex = serial.to_bytes([0x40, 0x0]);
-        left_wheel.write(hex);
-        #hex = serial.to_bytes([0x80, 0x0]);
-        #right_wheel.write(hex);
+        hex = serial.to_bytes([0xCC]);
+        right_wheel.write(hex);
         print("WRITTEN", hex);
 
-	#while True:
-	#	print("READING LEFT");
+	while True:
+		print("READING LEFT");
 
-	#	line = left_.read();
-	#	hex_value = line.encode("hex");
-	#	integer_value = int(line.encode("hex"), 16);
+		line = right_wheel.read();
+		hex_value = line.encode("hex");
+		integer_value = int(line.encode("hex"), 16);
 
-	#	if (integer_value == 255): # End of command
-	#		break;
+		if (integer_value == 255): # End of command
+			break;
 
-	#	print(["DATA: ", "0x" + hex_value, integer_value]);
+		print(["DATA: ", "0x" + hex_value, integer_value]);
 
-	#	voltage = integer_value * voltage_multiplier;
-	#	print("VOLTAGE:", voltage, "V");
+		voltage = integer_value * voltage_multiplier;
+		print("VOLTAGE:", voltage, "V");
 
 #	hex = serial.to_bytes([0xCA]);
 #	ser.write(hex);
