@@ -1,9 +1,24 @@
 # sofabot
-A sofa that you can drive!
+## A sofa that you can drive! 
+You can see more on [our website](https://www.untrobotics.com/)
 
+### Goals
+- Teach students how to use the knowlege they gain in their classes to build things in the real world
+- Have fun
+- Be safe
 
-# Built on hard work and collabs
+### Donations
+You can donate by contacting us at [hello@untrobotics.com](mailto:hello@untrobotics.com) or calling at [(940) 304-0795](callto:+19403040795)
+
+### Built on hard work and collabs
 By students for students
  
-Team is:
-Seb King, Nick Tindle, Tyler Martinez, Alex Furgueson, Michelle Rosal Vargas, Alex Bacallo, with special support from Dusty and Grace
+##### Team is:
+* Seb King
+* Nick Tindle
+* Tyler Martinez
+* Alex Furgueson
+* Michelle Rosal Vargas
+* Alex Bacallo
+
+###### with special support from Dusty and Grace
