@@ -24,10 +24,10 @@ By students for students
 
 ### Our Team
 
-- Seb King
-- Nick Tindle
-- Tyler Martinez
-- Alex Ferguson
-- Alex Bacallo
+- [Seb King](https://www.linkedin.com/in/sebastian-king/)
+- [Nick Tindle](https://www.linkedin.com/in/ntindle/)
+- [Tyler Martinez](https://www.linkedin.com/in/tyleradammartinez/)
+- [Alex Ferguson](https://www.linkedin.com/in/alexander-ferguson-aerospace-engineer/)
+- [Alex Bacallo](https://www.linkedin.com/in/alejandro-bacallao-1bbbb8183/)
 
 - **with additonal support from Dusty and Grace**
