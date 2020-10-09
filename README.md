@@ -27,8 +27,7 @@ By students for students
 - Seb King
 - Nick Tindle
 - Tyler Martinez
-- Alex Furgueson
-- Michelle Rosal Vargas
+- Alex Ferguson
 - Alex Bacallo
 
 - **with additonal support from Dusty and Grace**
